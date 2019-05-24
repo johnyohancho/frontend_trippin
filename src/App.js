@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Route} from 'react-router-dom';
+import EventsList from './EventsList.js';
+import Map from './Map.js';
+import { throwStatement } from '@babel/types';
 
-function App() {
+class App extends React.Component {
+  constructor() {
+    super()
+  }
+  
+  render() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <header className="App-header">
+          <h1>Trippin'</h1>
+        </header>
+      </div>
+      <div>
+        <Map />
+      </div>
     </div>
-  );
+    )
+  }
 }
 
 export default App;
