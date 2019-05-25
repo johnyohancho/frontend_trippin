@@ -2,33 +2,28 @@ import React, {Component} from 'react';
 
 class Map extends React.Component {
     constructor(props) {
-        super(props);
-        this.state= {
-            lng: 10,
-            lat: 10,
-            zoom: 5
-        }
+        super(props)
     }
 
     componentDidMount() {
-        const {lng, lat, zoom} = this.state
+        const {Lng, Lat, Zoom} = this.props.mapCoords
 
         const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js')
         mapboxgl.accessToken = 'pk.eyJ1IjoibGluY29sbmZsZWV0IiwiYSI6ImNqdzI5ZXl4NjAwcWg0YW93dXFyZjVqa2oifQ.tiX8wMoYv6v0lUrvhNaJsg';
         const map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: [lat, lng],
-            zoom: zoom
+            center: [Lat, Lng],
+            zoom: Zoom
         })
 
         map.on('move', () => {
-            const { lng, lat } = map.getCenter()
-            this.setState({
-                lng: lng.toFixed(4),
-                lat: lat.toFixed(4),
-                zoom: map.getZoom().toFixed(2)
-            })
+            const { lng, lat } = map.getCenter();
+            this.props.moveMap(
+                lng.toFixed(4),
+                lat.toFixed(4),
+                map.getZoom().toFixed(2)
+            )
         })
     }
 
