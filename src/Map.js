@@ -27,8 +27,6 @@ class Map extends React.Component {
         })
     }
 
-
-
     componentWillUnmount() {
         this.map.remove()
     }

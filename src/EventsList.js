@@ -5,9 +5,15 @@ import App from './App.js';
 function EventsList() {
     return (
         <div>
-            - Events
-            - go
-            - here
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <div>
+                - Events
+                - go
+                - here
+            </div>
         </div>
     )
 }
