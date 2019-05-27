@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-// import {Route, Link} from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import {throwStatement} from '@babel/types';
 // import {Header} from 'semantic-ui-react';
 import NavBar from './NavBar.js';
