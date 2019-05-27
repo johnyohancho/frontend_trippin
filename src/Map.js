@@ -1,20 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 class Map extends React.Component {
-    constructor(props) {
-        super(props)
-    }
 
     componentDidMount() {
-        const {Lng, Lat, Zoom} = this.props.mapCoords
+        // const {LAT, LNG, ZOOM} = this.props.mapCoords
 
         const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js')
         mapboxgl.accessToken = 'pk.eyJ1IjoibGluY29sbmZsZWV0IiwiYSI6ImNqdzI5ZXl4NjAwcWg0YW93dXFyZjVqa2oifQ.tiX8wMoYv6v0lUrvhNaJsg';
         const map = new mapboxgl.Map({
             container: this.mapContainer,
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [Lat, Lng],
-            zoom: Zoom
+            style: 'mapbox://styles/lincolnfleet/cjw6lnlge3u0f1cpbdhzdae1d',
+            center: [-84.34, 33.74],
+            zoom: 10
         })
 
         map.on('move', () => {
@@ -34,13 +31,15 @@ class Map extends React.Component {
     render() {
         const style = {
             position: 'fixed',
-            top: 0,
-            bottom: 0,
+            top: 60,
+            bottom: 30,
+            left: 10,
+            right: 10,
             width: '100%'
         };
 
         return (
-            <div style={style} ref={target => this.mapContainer = target} />
+            <div className='item2' style={style} ref={target => this.mapContainer = target} />
         )
     }
 }

@@ -1,6 +1,4 @@
 import React from 'react';
-import {Router, Link} from 'react-router-dom';
-import {Grid,Container,Header,GridColumn} from 'semantic-ui-react';
 import Map from './Map.js';
 import EventsList from './EventsList.js';
 
@@ -9,28 +7,29 @@ class Main extends React.Component {
     constructor(props) {
         super(props)
         this.state= {
-            mapCoords: {Lng: 10, Lat: 10, Zoom: 5}
+            mapCoords: {LNG: -85, LAT: 35, ZOOM: 5}
         }
     }
 
     moveMap= (lng, lat, zoom)=>{
         this.setState({ mapCoords: {
-            Lng: lng,
-            Lat: lat,
-            Zoom: zoom
+            LNG: lng,
+            LAT: lat,
+            ZOOM: zoom
         }})
     }
 
     render() {
         return(
-            <Grid>
-                <GridColumn className='ui grid equal width column'> 
-                    <EventsList></EventsList>
-                </GridColumn>
-                {/* <GridColumn className='ui grid equal width column'> */}
-                    <Map className='ui grid equal width column' mapCoords={this.state.mapCoords} moveMap={this.moveMap}/>
-                {/* </GridColumn> */}
-            </Grid>
+            <div className='App'>
+                {console.log('MAIN RENDERED')}
+                <div className='item1'>
+                    <EventsList />
+                </div>
+                {/* <div className='item2'> */}
+                    {/* <Map mapCoords={this.state.mapCoords} moveMap={this.moveMap}/> */}
+                {/* </div> */}
+            </div>
         )
     }
 }
