@@ -7,7 +7,8 @@ class Main extends React.Component {
     constructor(props) {
         super(props)
         this.state= {
-            mapCoords: {LNG: -85, LAT: 35, ZOOM: 5}
+            mapCoords: {LNG: -85, LAT: 35, ZOOM: 5};
+            citySearch: '';
         }
     }
 

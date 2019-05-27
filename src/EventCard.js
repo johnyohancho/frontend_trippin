@@ -6,7 +6,9 @@ function EventCard (props) {
         {console.log('EVENTCARD RENDERED')}
             <div className="card">
                 <div className="content">
-                    <div className="header">This is an event</div>
+                    <div className="header">
+                        This is an event
+                    </div>
                     <div className="description">
                         It is in a place and has stuff
                     </div>
