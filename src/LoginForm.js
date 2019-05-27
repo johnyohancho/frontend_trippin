@@ -5,9 +5,9 @@ class LoginForm extends React.Component {
     constructor() {
         super()
         state = {
-            username = '',
-            email = '',
-            password = '',
+            username: '',
+            email: '',
+            password: '',
             errors: []
         }
     }
@@ -16,7 +16,7 @@ class LoginForm extends React.Component {
         if (this.state.errors.length > 0) {
             return (
                 <div className="login-form-errors">
-                    <p>Form Errors</p>
+                    <p>Invalid!</p>
                     <ul>
                         {this.state.errors.map(err => <li>{err}</li>)}
                     </ul>
