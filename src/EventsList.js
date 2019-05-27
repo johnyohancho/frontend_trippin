@@ -1,20 +1,26 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import App from './App.js';
+import React from 'react';
+import EventCard from './EventCard.js'
 
-function EventsList() {
-    return (
-        <div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+class EventsList extends React.Component {
+
+    createCards= ()=> {
+        // this.props.events.map(event => {
+            // return <EventCard name={event.name} date={event.date} price={event.price}></EventCard>
+        // })
+        for (let i=0; i<10; i++) {
+            return <EventCard />
+        }
+    }
+    
+    
+    render() {
+        return (
+            // <div className='flex-container'>
             <div>
-                - Events
-                - go
-                - here
+                {console.log('EVENTS LIST RENDERED')}
+                {this.createCards()}
             </div>
-        </div>
-    )
+        )
+    }
 }
 export default EventsList;
