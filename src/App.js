@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import MainContainer from './containers/MainContainer';
 import LoginForm from './components/LoginForm'
 import Header from './components/Header'
+import SignUpForm from './components/SignUpForm'
 
 
 class App extends React.Component {
@@ -44,9 +45,10 @@ class App extends React.Component {
           <div id="main-row" className="row">
               <NavBar searchSubmit={this.searchSubmit}/>
           <Switch>
-            <Route exact path="/" render={()=> <MainContainer searchTerms={this.state.searchTerms}/>} />
+            <Route exact path="/" render={(props)=> <MainContainer {...props} searchTerms={this.state.searchTerms} />} />
             <Route exact path="/about" component={null} />
-            <Route exact path="/login" component={LoginForm} />
+            <Route exact path="/login" render={(props)=> <MainContainer {...props} searchTerms={this.state.searchTerms} />} />
+            <Route exact path="/signup" component={SignUpForm}/>
             <Route exact path="/budget" component={null} />
           </Switch>
           </div>
