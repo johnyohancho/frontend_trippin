@@ -21,10 +21,17 @@ const Header = () => {
                   onClick={(e) => localStorage.clear() } >
                   <div className="content">Logout</div>
                   </Link> :
-                  null
-                  // <Link to="/login" className="position right item" style={{ color: 'black' }} >
-                  // <div className="content">Login</div>
-                  // </Link>
+                  <Link to="/login" className="position right item" style={{ color: 'black' }} >
+                  <div className="content">Login</div>
+                  </Link>
+              }
+              {
+                localStorage.getItem("token") ?
+                null 
+                :
+                <Link to="/signup" className="position right item" style={{ color: 'black' }}>
+                <div className="content">SignUp</div>
+                </Link> 
               }
           </div>
             )

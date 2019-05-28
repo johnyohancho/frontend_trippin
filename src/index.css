@@ -27,3 +27,9 @@ code {
 #login-title {
   align: center;
 }
+
+.card{
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
