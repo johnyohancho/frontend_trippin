@@ -49,22 +49,27 @@ class LoginForm extends React.Component {
     
     render() {
         return (
-            <div className="ui raised segment">
-                <div className="ui form">
-                    <form className="login-form" onSubmit={this.handleSubmit}>
-                        {this.displayErrors()}
-                        <div className='field'>
-                            <label>Email</label>
-                            <input type="text" name="email" placeholder="email"
-                                onChange={(e) => this.setState({ email: e.target.value })}></input>
+            <div className="ui relaxed centered grid">
+                <div className="six wide column">
+                    <div className="ui raised segment">
+                        <div className="ui form">
+                            <h2 className="ui center aligned header">Login</h2>
+                            <form className="login-form" onSubmit={this.handleSubmit}>
+                                {this.displayErrors()}
+                                <div className='field'>
+                                    <label>Email</label>
+                                    <input type="text" name="email" placeholder="email"
+                                        onChange={(e) => this.setState({ email: e.target.value })}></input>
+                                </div>
+                                <div className='field'>
+                                    <label>Password</label>
+                                    <input type="text" name="password" placeholder="password"
+                                        onChange={(e) => this.setState({ password: e.target.value })}></input>
+                                </div>
+                                <button className="ui button" type="submit">Submit</button>
+                            </form>
                         </div>
-                        <div className='field'>
-                            <label>Password</label>
-                            <input type="text" name="password" placeholder="password"
-                                onChange={(e) => this.setState({ password: e.target.value })}></input>
-                        </div>
-                        <button className="ui button" type="submit">Submit</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         )

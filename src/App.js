@@ -8,6 +8,8 @@ import MainContainer from './containers/MainContainer';
 import Map from './components/Map';
 import LoginForm from './components/LoginForm'
 import SearchResults from './containers/SearchResults.js';
+import Header from './components/Header'
+
 
 class App extends React.Component {
   constructor() {
@@ -37,10 +39,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="ui grid">
-        <div className="row">
-        </div>
-        <NavBar searchSubmit={this.searchSubmit}/>
+      <div id="app-container">
+        <div id="main-grid" className="ui two wide column grid">
+          <div id="nav-row" className="row">
+              <Header />
+          </div>
+          <div id="main-row" className="row">
+              <NavBar searchSubmit={this.searchSubmit}/>
           <Switch>
             <Route exact path="/" render={()=> <MainContainer searchTerms={this.state.searchTerms}/>} />
             <Route exact path="/about" component={null} />
@@ -48,6 +53,8 @@ class App extends React.Component {
             <Route exact path="/budget" component={null} />
             <Route exact path='/results' render={()=> <SearchResults searchTerms={this.state.searchTerms}/>} />
           </Switch>
+          </div>
+        </div>
       </div>
     );
   }
