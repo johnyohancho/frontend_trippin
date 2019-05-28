@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#root {
+  height: 100%;
+}
+
+#main-grid {
+  height: 100%;
+}
+
+#nav-row {
+  height: 10%;
+}
+
+#login-title {
+  align: center;
+}
