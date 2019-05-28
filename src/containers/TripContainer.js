@@ -1,5 +1,4 @@
 import React from 'react';
-import EventsList from './EventsList';
 import TripForm from '../components/TripForm'
 import TripCard from '../components/TripCard'
 

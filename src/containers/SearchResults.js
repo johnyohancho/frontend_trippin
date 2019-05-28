@@ -1,46 +1,51 @@
 import React from 'react';
-import Main from './MainContainer.js';
-import EventCard from '../components/EventCard.js';
+import EventCard from '../components/EventCard';
 
 class SearchResults extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state= {
+            eventList:[]
+        }
+    }
 
-    searchFetch= () =>{
-        console.log('searchFetch triggered')
-        let searchTerms= this.props.searchTerms
+    componentDidMount() {
+        // searchFetch= ()=>{
         let keyword=''
         let city=''
         let radius=''
         let date=''
-        console.log('fetch vars', keyword,city,radius,date)
-        if (searchTerms.keyword) {
-            keyword = `&keyword=${searchTerms.keyword}`
+        if (this.props.searchTerms.keyword) {
+            keyword = `&keyword=${this.props.searchTerms.keyword}`
         }
-        if (searchTerms.city) {
-            city = `&city=${searchTerms.city}`
+        if (this.props.searchTerms.city) {
+            city = `&city=${this.props.searchTerms.city}`
         }
-        if (searchTerms.radius) {
-            radius = `&radius=${searchTerms.radius}&unit=miles`
+        if (this.props.searchTerms.radius) {
+            radius = `&radius=${this.props.searchTerms.radius}&unit=miles`
         }
-        if (searchTerms.date) {
-            date = `&startDateTime=${searchTerms.date}`
+        if (this.props.searchTerms.date) {
+            date = `&startDateTime=${this.props.searchTerms.date}`
         }
-        fetch(`https://app.ticketmaster.com/discovery/v2/suggest.json?size=20${keyword}${city}${radius}${date}&apikey=9b7LFj2VHCQZkEt6UGKU0objuiK3Bzkl`)
+        fetch(`https://app.ticketmaster.com/discovery/v2/suggest.json?size=5${keyword}${city}${radius}${date}&apikey=9b7LFj2VHCQZkEt6UGKU0objuiK3Bzkl`)
         .then(resp => resp.json())
-        .then(data => this.createResults(data))
-        .then(data => console.log(data))
-    }
-
-    createResults= (eventsList)=> {
-            eventsList.map(event=>{
-            return <EventCard event={event} />
+        // .then(data => console.log(data))
+        // .catch(errors => console.log(errors))
+        .then(data => {
+            this.setState({eventList: data._embedded.events});
+            console.log('state', this.state)
+            console.log("fetch success?")
         })
     }
-
+    
     render () {
+        console.log("Yay")
+        console.log(this.state.eventList)
         return (
-            <div>
-                {console.log('search results props', this.props)}
-                {this.searchFetch}
+            <div className='ui cards'>
+                {this.state.eventList.map(details=>{
+                    return <EventCard event={details}/>
+                })}
             </div>
         )
     }
