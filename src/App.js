@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
-import {throwStatement} from '@babel/types';
+// import {throwStatement} from '@babel/types';
 // import {Header} from 'semantic-ui-react';
 import NavBar from './NavBar';
 import MainContainer from './containers/MainContainer';
-import Map from './components/Map';
 import LoginForm from './components/LoginForm'
-import SearchResults from './containers/SearchResults.js';
 import Header from './components/Header'
 
 
@@ -27,7 +25,6 @@ class App extends React.Component {
 
   searchSubmit= (e)=>{
     e.preventDefault()
-    console.log('search keyword value', e.target.keyword.value)
     this.setState({ searchTerms: {
         keyword: e.target.keyword.value,
         city: e.target.city.value,
@@ -51,7 +48,6 @@ class App extends React.Component {
             <Route exact path="/about" component={null} />
             <Route exact path="/login" component={LoginForm} />
             <Route exact path="/budget" component={null} />
-            <Route exact path='/results' render={()=> <SearchResults searchTerms={this.state.searchTerms}/>} />
           </Switch>
           </div>
         </div>
