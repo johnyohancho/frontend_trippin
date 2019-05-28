@@ -1,5 +1,5 @@
 .App {
-  background-color: #301919;
+  background-color: #C9DEFF;
   color: white;
   position: absolute;
   height: 100% !important;
@@ -53,3 +53,5 @@
   order: 2;
   flex: 1;
 }
+
+
