@@ -7,14 +7,34 @@ import NavBar from './NavBar';
 import MainContainer from './containers/MainContainer';
 import Map from './components/Map';
 import LoginForm from './components/LoginForm'
+import SearchResults from './containers/SearchResults.js';
 import Header from './components/Header'
+
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      // sidebarView: 'ui vertical inverted thin sidebar menu left overlay hidden'
+      searchTerms: {
+        keyword: null,
+        city: null,
+        date: null,
+        radius: null,
+        genreID: null,
+      }
     }
+  }
+
+  searchSubmit= (e)=>{
+    e.preventDefault()
+    console.log('search keyword value', e.target.keyword.value)
+    this.setState({ searchTerms: {
+        keyword: e.target.keyword.value,
+        city: e.target.city.value,
+        date: e.target.date.value,
+        radius: e.target.radius.value,
+      }
+    })
   }
 
   render() {
@@ -25,13 +45,14 @@ class App extends React.Component {
               <Header />
           </div>
           <div id="main-row" className="row">
-              <NavBar />
-              <Switch>
-                <Route exact path="/about" component={null} />
-                <Route exact path="/login" component={MainContainer} />
-                <Route exact path="/budget" component={null} />
-                <Route exact path="/" component={MainContainer} />
-              </Switch>
+              <NavBar searchSubmit={this.searchSubmit}/>
+          <Switch>
+            <Route exact path="/" render={()=> <MainContainer searchTerms={this.state.searchTerms}/>} />
+            <Route exact path="/about" component={null} />
+            <Route exact path="/login" component={LoginForm} />
+            <Route exact path="/budget" component={null} />
+            <Route exact path='/results' render={()=> <SearchResults searchTerms={this.state.searchTerms}/>} />
+          </Switch>
           </div>
         </div>
       </div>
