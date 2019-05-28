@@ -4,9 +4,10 @@ class TripForm extends React.Component {
 
     constructor() {
         super()
-        state = {
+        this.state = {
             name: '',
-            budget: 0
+            budget: 0,
+            errors: []
         }
     }
 
@@ -49,20 +50,21 @@ class TripForm extends React.Component {
 
     render() {
         return (
-            <form className="trip-form" onSubmit={this.saveTrip}>
+            <form className="ui form" onSubmit={this.saveTrip}>
             { this.displayErrors() }
-            <div class="field">
-              <label>Name</label>
-              <input type="text" name="name" placeholder="Name"
-                onChange={(e) => this.setState({ name: e.target.value })} />
-            </div>
-            <div class="field">
-              <label>Budget</label>
-              <input type="text" name="budget" placeholder="Budget"
-                onChange={(e) => this.setState({ description: e.target.value })} />
-            </div>
-            
-            <button class="ui button" type="submit">Submit</button>
+            {/* <div className="equal width fields"> */}
+              <div className="field">
+                <label>Trip Name</label>
+                <input type="text" name="name" placeholder="Name"
+                  onChange={(e) => this.setState({ name: e.target.value })} />
+              </div>
+              <div className="field">
+                <label>Budget</label>
+                <input type="text" name="budget" placeholder="Budget"
+                  onChange={(e) => this.setState({ description: e.target.value })} />
+              </div>
+            {/* </div> */}
+              <button className="ui button" type="Submit">Submit</button>
           </form>
         )
     }
