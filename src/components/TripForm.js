@@ -50,7 +50,7 @@ class TripForm extends React.Component {
 
     render() {
         return (
-            <form className="trip-form ui form" onSubmit={this.saveTrip}>
+            <form className="ui form" onSubmit={this.saveTrip}>
             { this.displayErrors() }
             {/* <div className="equal width fields"> */}
               <div className="field">

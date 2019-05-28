@@ -10,7 +10,7 @@ class TripContainer extends React.Component {
 
     render() {
         return (
-            <div className="trip-container">
+            <div className="ui container">
                 <TripForm />
                 {/* <EventsList /> */}
             </div>

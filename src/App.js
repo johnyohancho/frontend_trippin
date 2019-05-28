@@ -50,23 +50,16 @@ class App extends React.Component {
   // }
   render() {
     return (
-      <div className="ui container">
-        <div className="ui menu">
-          <NavBar />
+      <div className="ui grid">
+        <div className="row">
         </div>
-        <div className="ui two column grid">
-          <div className="column">
-            <Switch>
-              <Route exact path="/" component={MainContainer} />
-              <Route exact path="/about" component={null} />
-              <Route exact path="/login" component={LoginForm} />
-              <Route exact path="/budget" component={null} />
-            </Switch>
-          </div>
-          <div className="column">
-            {/* <Map /> */}
-          </div>
-        </div>
+        <NavBar />
+          <Switch>
+            <Route exact path="/" component={MainContainer} />
+            <Route exact path="/about" component={null} />
+            <Route exact path="/login" component={LoginForm} />
+            <Route exact path="/budget" component={null} />
+          </Switch>
       </div>
     );
   }
