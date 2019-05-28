@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import MainContainer from './containers/MainContainer';
 import Map from './components/Map';
 import LoginForm from './components/LoginForm'
+import Header from './components/Header'
 
 class App extends React.Component {
   constructor() {
@@ -16,50 +17,23 @@ class App extends React.Component {
     }
   }
 
-  // toggleNavBar= ()=> {
-  //   if (this.state.sidebarView === 'ui vertical inverted thin sidebar menu left overlay hidden') {
-  //     this.setState({sidebarView: 'ui vertical inverted thin sidebar menu left overlay visible'})
-  //   } else {
-  //     this.setState({sidebarView: 'ui vertical inverted thin sidebar menu left overlay hidden'})
-  //   }
-  // }
-
-  // render() {
-  //   return (
-  //     <div>
-  //       {console.log('APP RENDERED')}
-  //       <div className='ui fixed inverted main menu'>
-  //         <a className='launch icon item' onClick={this.toggleNavBar}>
-  //           <i className='content icon'></i>
-  //         </a>
-  //         <div>
-  //           Trippin'
-  //         </div>
-  //       </div>
-  //       <div className={this.state.sidebarView}>
-  //         {console.log('SIDEBAR LOADED')}
-  //       {/* <div className='uivertical inverted thin sidebar menu let overlay hidden'> */}
-  //         <NavBar />
-  //       </div>
-  //       <div className='dimmed pusher' onClick={this.toggleNavBar}>
-  //       {/* <div> */}
-  //         <Main />
-  //       </div>
-  //     </div>
-  //   )
-  // }
   render() {
     return (
-      <div className="ui grid">
-        <div className="row">
+      <div id="app-container">
+        <div id="main-grid" className="ui two wide column grid">
+          <div id="nav-row" className="row">
+              <Header />
+          </div>
+          <div id="main-row" className="row">
+              <NavBar />
+              <Switch>
+                <Route exact path="/about" component={null} />
+                <Route exact path="/login" component={MainContainer} />
+                <Route exact path="/budget" component={null} />
+                <Route exact path="/" component={MainContainer} />
+              </Switch>
+          </div>
         </div>
-        <NavBar />
-          <Switch>
-            <Route exact path="/" component={MainContainer} />
-            <Route exact path="/about" component={null} />
-            <Route exact path="/login" component={LoginForm} />
-            <Route exact path="/budget" component={null} />
-          </Switch>
       </div>
     );
   }
