@@ -22,6 +22,7 @@ class App extends React.Component {
         date: null,
         radius: null,
         genreID: null,
+        loggedOut: false,
       }
     }
   }
@@ -38,19 +39,25 @@ class App extends React.Component {
     })
   }
 
+  updateLoginStatus = () => {
+    this.setState({
+      logginIn: !this.state.loggedIn
+    })
+  }
+
   render() {
     return (
       <div id="app-container">
         <div id="main-grid" className="ui two wide column grid">
           <div id="nav-row" className="row">
-              <Header />
+              <Header loggedIn={this.state.loggedIn} updateLoginStatus={this.updateLoginStatus}/>
           </div>
           <div id="main-row" className="row">
               <NavBar searchSubmit={this.searchSubmit}/>
           <Switch>
-            <Route exact path="/" render={(props)=> <MainContainer {...props} searchTerms={this.state.searchTerms} />} />
+            <Route exact path="/" render={(props)=> <MainContainer {...props} searchTerms={this.state.searchTerms}/>} />
             <Route exact path="/about" component={null} />
-            <Route exact path="/login" render={(props)=> <MainContainer {...props} searchTerms={this.state.searchTerms} />} />
+            <Route exact path="/login" render={(props)=> <MainContainer {...props} searchTerms={this.state.searchTerms}/>} />
             <Route exact path="/signup" component={SignUpForm}/>
             <Route exact path="/budget" component={null} />
             <Route exact path='/results' render={()=> <SearchResults searchTerms={this.state.searchTerms}/>} />
