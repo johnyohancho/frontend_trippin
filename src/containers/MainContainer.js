@@ -24,8 +24,23 @@ class Main extends React.Component {
         .catch(err => console.log("Error:", err))
     }
 
-    addTrip = ()=>{
 
+    addTrip = (newTrip) => {
+        let newTripList = this.state.allTrips.concat(newTrip)
+        this.setState({
+            allTrips: newTripList
+        })
+    }
+
+    deleteTrip = (id) => {
+        let tripDel = this.state.allTrips.filter(trip => trip.id === id)
+        fetch(`http://localhost:3000/trips/${id}`, {
+            method: 'delete'
+            }).then(response =>
+              response.json().then(json => {
+                console.log(json);
+              })
+            );
     }
     
     addEvent= (e)=> {
@@ -43,13 +58,13 @@ class Main extends React.Component {
                 localStorage.getItem("token") ?
                 <div className="ui two column grid">
                     <div className="ten wide column">
-                        <TripContainer allTrips={this.state.allTrips} addTrip={this.addTrip}/>
+                        <TripContainer allTrips={this.state.allTrips} addTrip={this.addTrip} deleteTrip={this.deleteTrip}/>
                     </div>
                     <div className="six wide column">
                         <SearchResults searchTerms={this.props.searchTerms} addEvent={this.addEvent}/>
                     </div>
                 </div> :
-                    <LoginForm history={this.props.history}/>
+                    <LoginForm history={this.props.history} updateLoginStatus={this.props.updateLoginStatus}/>
             }
             </div>
         )

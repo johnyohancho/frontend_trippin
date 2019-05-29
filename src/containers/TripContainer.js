@@ -10,9 +10,9 @@ const TripContainer = (props) => {
                     <h2>Your Trips</h2>
                     <button className="ui button" onClick={null}>Add a Trip</button>
                     {props.allTrips.map(trip => 
-                        <TripCard card={trip}/>
-                    )}
-                    <TripForm />
+                        <TripCard card={trip} deleteTrip={props.deleteTrip}/>
+                        )}
+                    <TripForm addTrip={props.addTrip}/>
                 </div>
             </div>
         )

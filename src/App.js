@@ -37,10 +37,12 @@ class App extends React.Component {
   }
 
   updateLoginStatus = () => {
+    console.log("called from login submit")
     this.setState({
       logginIn: !this.state.loggedIn
     })
   }
+
 
   render() {
     return (
@@ -52,9 +54,9 @@ class App extends React.Component {
           <div id="main-row" className="row">
               <NavBar searchSubmit={this.searchSubmit}/>
           <Switch>
-            <Route exact path="/" render={(props)=> <MainContainer {...props} searchTerms={this.state.searchTerms}/>} />
+            <Route exact path="/" render={(props)=> <MainContainer {...props} searchTerms={this.state.searchTerms} updateLoginStatus={this.updateLoginStatus}/>} />
             <Route exact path="/about" component={null} />
-            <Route exact path="/login" render={(props)=> <MainContainer {...props} searchTerms={this.state.searchTerms}/>} />
+            <Route exact path="/login" render={(props)=> <MainContainer {...props} searchTerms={this.state.searchTerms} updateLoginStatus={this.updateLoginStatus}/>} />
             <Route exact path="/signup" component={SignUpForm}/>
             <Route exact path="/budget" component={null} />
           </Switch>
