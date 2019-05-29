@@ -42,6 +42,7 @@ class LoginForm extends React.Component {
                 this.setState({ errors: data.errors })
             } else {
                 localStorage.setItem("token", data.token)
+                this.props.updateLoginStatus()
                 this.props.history.push("/")
             }
         })
