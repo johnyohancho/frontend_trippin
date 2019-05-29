@@ -12,7 +12,7 @@ const EventCard= (props)=> {
                     Starts: {props.event.dates.start.localTime}, {props.event.dates.start.localDate}
                 </div>
             </div>
-            <div class="ui bottom attached button" onClick={()=> {console.log('add button clicked for', props.event.name)}}>
+            <div class="ui bottom attached button" onClick={props.addEvent}>
                 <i class="add icon"></i>
                     Add Event
             </div>

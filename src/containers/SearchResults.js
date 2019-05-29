@@ -5,11 +5,16 @@ class SearchResults extends React.Component {
     constructor(props) {
         super(props)
         this.state= {
-            eventList:[]
+            searchResults:[],
+            resultsPage: 0
         }
     }
 
     componentDidMount() {
+        this.fetchResults()
+    }
+
+    fetchResults= ()=>{
         let keyword=''
         let city=''
         let radius=''
@@ -26,29 +31,42 @@ class SearchResults extends React.Component {
         if (this.props.searchTerms.date) {
             date = `&startDateTime=${this.props.searchTerms.date}`
         }
-        fetch(`https://app.ticketmaster.com/discovery/v2/suggest.json?size=5${keyword}${city}${radius}${date}&apikey=9b7LFj2VHCQZkEt6UGKU0objuiK3Bzkl`)
+        fetch(`https://app.ticketmaster.com/discovery/v2/suggest.json?size=5&page=${this.state.resultsPage}${keyword}${city}${radius}${date}&apikey=9b7LFj2VHCQZkEt6UGKU0objuiK3Bzkl`)
         .then(resp => resp.json())
         .then(data => {
             this.setState({eventList: data._embedded.events});
+            console.log('fetch data', data._embedded.events)
         })
+    }
+
+    changePage= (e)=>{
+        if (this.state.resultsPage > 0) {
+            this.setState({
+                resultsPage: parseInt(this.state.resultsPage)+parseInt(e.target.value)
+            })
+        }
+        else if ((this.state.resultsPage <= 0) && (e.target.value == 1)) {
+            this.setState({
+                resultsPage: parseInt(this.state.resultsPage)+parseInt(e.target.value)
+            })
+        }
+        this.fetchResults()
     }
     
     render () {
-        console.log("Yay")
-        console.log(this.state.eventList)
         return (
             <div>
-                <button class="ui left labeled icon button">
+                <button class="ui left labeled icon button" value={-1} onClick={this.changePage}>
                     <i class="left arrow icon"></i>
-                    Previous 5
+                    Last
                 </button>
-                <button class="ui right labeled icon button">
+                <button class="ui right labeled icon button" value={1} onClick={this.changePage}>
                     <i class="right arrow icon"></i>
-                    Next 5
+                    Next
                 </button>
                 <div className='ui cards'>
-                    {this.state.eventList.map(details=>{
-                        return <EventCard event={details}/>
+                    {this.state.searchResults.map(details=>{
+                        return <EventCard event={details} addEvent={this.props.addEvent}/>
                     })}
                 </div>
             </div>
