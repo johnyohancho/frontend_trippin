@@ -33,14 +33,16 @@ class Main extends React.Component {
     }
 
     deleteTrip = (id) => {
-        let tripDel = this.state.allTrips.filter(trip => trip.id === id)
+        // let tripDel = this.state.allTrips.filter(trip => trip.id === id)
         fetch(`http://localhost:3000/trips/${id}`, {
-            method: 'delete'
-            }).then(response =>
-              response.json().then(json => {
-                console.log(json);
-              })
-            );
+        method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))
+        let newTripList = this.state.allTrips.filter(trip => trip.id !== id)
+        this.setState({
+            allTrips: newTripList
+        })
     }
     
     addEvent= (e)=> {

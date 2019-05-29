@@ -62,7 +62,7 @@ class TripForm extends React.Component {
               <div className="field">
                 <label>Budget</label>
                 <input type="text" name="budget" placeholder="Budget"
-                  onChange={(e) => this.setState({ description: e.target.value })} />
+                  onChange={(e) => this.setState({ budget: e.target.value })} />
               </div>
             {/* </div> */}
               <button className="ui button" type="Submit">Submit</button>

@@ -5,9 +5,10 @@ import { Switch, Route } from 'react-router-dom';
 // import {Header} from 'semantic-ui-react';
 import NavBar from './NavBar';
 import MainContainer from './containers/MainContainer';
-import LoginForm from './components/LoginForm'
+// import LoginForm from './components/LoginForm'
 import Header from './components/Header'
 import SignUpForm from './components/SignUpForm'
+import About from './components/About'
 
 
 class App extends React.Component {
@@ -50,12 +51,21 @@ class App extends React.Component {
         <div id="main-grid" className="ui two wide column grid">
           <div id="nav-row" className="row">
               <Header loggedIn={this.state.loggedIn} updateLoginStatus={this.updateLoginStatus}/>
+              {localStorage.getItem("token") ?
+                <div class="right floated two wide column">
+                  <div id="logged-in-menu" className="ui menu">
+                    <i id="logged-in" className="fa fa-plane">&nbsp;<label id="logged-in-text"><strong>Logged In</strong></label></i>
+                  </div>
+                </div>
+                :
+                null
+              }
           </div>
           <div id="main-row" className="row">
               <NavBar searchSubmit={this.searchSubmit}/>
           <Switch>
             <Route exact path="/" render={(props)=> <MainContainer {...props} searchTerms={this.state.searchTerms} updateLoginStatus={this.updateLoginStatus}/>} />
-            <Route exact path="/about" component={null} />
+            <Route exact path="/about" component={About} />
             <Route exact path="/login" render={(props)=> <MainContainer {...props} searchTerms={this.state.searchTerms} updateLoginStatus={this.updateLoginStatus}/>} />
             <Route exact path="/signup" component={SignUpForm}/>
             <Route exact path="/budget" component={null} />
