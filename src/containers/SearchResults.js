@@ -10,7 +10,6 @@ class SearchResults extends React.Component {
     }
 
     componentDidMount() {
-        // searchFetch= ()=>{
         let keyword=''
         let city=''
         let radius=''
@@ -29,12 +28,8 @@ class SearchResults extends React.Component {
         }
         fetch(`https://app.ticketmaster.com/discovery/v2/suggest.json?size=5${keyword}${city}${radius}${date}&apikey=9b7LFj2VHCQZkEt6UGKU0objuiK3Bzkl`)
         .then(resp => resp.json())
-        // .then(data => console.log(data))
-        // .catch(errors => console.log(errors))
         .then(data => {
             this.setState({eventList: data._embedded.events});
-            console.log('state', this.state)
-            console.log("fetch success?")
         })
     }
     
@@ -42,10 +37,20 @@ class SearchResults extends React.Component {
         console.log("Yay")
         console.log(this.state.eventList)
         return (
-            <div className='ui cards'>
-                {this.state.eventList.map(details=>{
-                    return <EventCard event={details}/>
-                })}
+            <div>
+                <button class="ui left labeled icon button">
+                    <i class="left arrow icon"></i>
+                    Previous 5
+                </button>
+                <button class="ui right labeled icon button">
+                    <i class="right arrow icon"></i>
+                    Next 5
+                </button>
+                <div className='ui cards'>
+                    {this.state.eventList.map(details=>{
+                        return <EventCard event={details}/>
+                    })}
+                </div>
             </div>
         )
     }
