@@ -30,7 +30,6 @@ class TripContainer extends React.Component {
                         <TripCard card={trip}/>
                         )}
                     <TripForm />
-                    {/* <EventsList /> */}
                 </div>
             </div>
         )
