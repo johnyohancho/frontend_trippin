@@ -23,6 +23,9 @@ class Main extends React.Component {
         .catch(err => console.log("Error:", err))
     }
 
+    viewTrip= (Id=null)=>{
+        this.setState({tripId: Id})
+    }
 
     addTrip = (newTrip) => {
         let newTripList = this.state.allTrips.concat(newTrip)
@@ -81,7 +84,7 @@ class Main extends React.Component {
                 localStorage.getItem("token") ?
                 <div className="ui two column grid">
                     <div className="ten wide column">
-                        <TripContainer allTrips={this.state.allTrips} addTrip={this.addTrip} deleteTrip={this.deleteTrip}/>
+                        <TripContainer allTrips={this.state.allTrips} addTrip={this.addTrip} deleteTrip={this.deleteTrip} viewTrip={this.viewTrip}/>
                     </div>
                     <div className="six wide column">
                         <SearchResults searchTerms={this.props.searchTerms} addEvent={this.addEvent}/>
