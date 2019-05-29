@@ -12,6 +12,7 @@ class TripForm extends React.Component {
     }
 
     saveTrip = (e) => {
+      console.log("save trip")
         e.preventDefault()
         fetch("http://localhost:3000/trips", {
           method: "POST",
@@ -28,13 +29,13 @@ class TripForm extends React.Component {
           } else {
             // add addTrip to DayCard
             // this.props.addDog(json)
+            this.props.addTrip(json)
           }
         })
       }
 
     displayErrors = () => {
         if (this.state.errors.length > 0) {
-          debugger;
           return (
             <div className='trip-form-errors'>
               <p>Invalid!</p>
