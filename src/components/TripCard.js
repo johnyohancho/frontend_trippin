@@ -13,7 +13,7 @@ const TripCard = (props) => {
                 </div>
                 <div className="content">
                     <div className="ui two buttons">
-                        <button class="ui green basic button">View</button>
+                        <button class="ui green basic button" onClick={()=>{props.viewTrip(props.card.id)}}>View</button>
                         <button class="ui red basic button" onClick={() => props.deleteTrip(props.card.id)}>Delete</button>
                     </div>
                 </div>

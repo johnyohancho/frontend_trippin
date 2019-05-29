@@ -8,7 +8,7 @@ class SignUpForm extends React.Component {
             username: '',
             name: '',
             email: '',
-            password: '',
+            password_digest: '',
             errors: []
         }
     }
@@ -30,13 +30,21 @@ class SignUpForm extends React.Component {
 
 
     handleSubmit = (e) => {
+
+        const reqObj = {
+            username:this.state.username, 
+            name:this.state.name,
+            password_digest:this.state.password_digest,
+            email:this.state.email
+        }
+        console.log('req object:',reqObj)
         e.preventDefault()
         fetch('http://localhost:3000/users', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify(reqObj)
         }).then(res => res.json())
         .then(data => {
             if (data.errors) {
@@ -73,8 +81,8 @@ class SignUpForm extends React.Component {
                                 </div>
                                 <div className='field'>
                                     <label>Password</label>
-                                    <input type="password" name="password" placeholder="password"
-                                        onChange={(e) => this.setState({ password: e.target.value })}></input>
+                                    <input type="password" name="password_digest" placeholder="password"
+                                        onChange={(e) => this.setState({ password_digest: e.target.value })}></input>
                                 </div>
                                 <button className="ui button" type="submit">Submit</button>
                             </form>
