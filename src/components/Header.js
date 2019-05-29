@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = (props) => {
     return (
           <div className="ui menu">
               <Link to='/'className='item'>
@@ -18,8 +18,12 @@ const Header = () => {
               {
                   localStorage.getItem("token") ?
                   <Link to="/" className="position right item" style={{ color: 'black' }}
-                  onClick={(e) => localStorage.clear() } >
+                  onClick={(e) => {localStorage.clear(); props.updateLoginStatus()} } >
+                  { props.loggedOut ?
+                  <div className="content">Login</div>
+                  :
                   <div className="content">Logout</div>
+                  }
                   </Link> :
                   <Link to="/login" className="position right item" style={{ color: 'black' }} >
                   <div className="content">Login</div>
