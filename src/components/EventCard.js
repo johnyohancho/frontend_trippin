@@ -1,7 +1,6 @@
 import React from 'react';
 
 const EventCard= (props)=> {
-    console.log('event', props)
     return (
         <div class="card">
             <div class="content">
@@ -12,7 +11,7 @@ const EventCard= (props)=> {
                     Starts: {props.event.dates.start.localTime}, {props.event.dates.start.localDate}
                 </div>
             </div>
-            <div class="ui bottom attached button" onClick={props.addEvent}>
+            <div class="ui bottom attached button" onClick={(e)=> {props.addEvent(props.event)}}>
                 <i class="add icon"></i>
                     Add Event
             </div>
