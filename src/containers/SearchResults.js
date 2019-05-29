@@ -33,10 +33,7 @@ class SearchResults extends React.Component {
         }
         fetch(`https://app.ticketmaster.com/discovery/v2/suggest.json?size=5&page=${this.state.resultsPage}${keyword}${city}${radius}${date}&apikey=9b7LFj2VHCQZkEt6UGKU0objuiK3Bzkl`)
         .then(resp => resp.json())
-        .then(data => {
-            this.setState({eventList: data._embedded.events});
-            console.log('fetch data', data._embedded.events)
-        })
+        .then(data => { this.setState({searchResults: data._embedded.events}) })
     }
 
     changePage= (e)=>{
@@ -45,7 +42,7 @@ class SearchResults extends React.Component {
                 resultsPage: parseInt(this.state.resultsPage)+parseInt(e.target.value)
             })
         }
-        else if ((this.state.resultsPage <= 0) && (e.target.value == 1)) {
+        else if ((this.state.resultsPage <= 0) && (e.target.value === 1)) {
             this.setState({
                 resultsPage: parseInt(this.state.resultsPage)+parseInt(e.target.value)
             })
@@ -56,12 +53,12 @@ class SearchResults extends React.Component {
     render () {
         return (
             <div>
-                <button class="ui left labeled icon button" value={-1} onClick={this.changePage}>
-                    <i class="left arrow icon"></i>
+                <button className="ui left labeled icon button" value={-1} onClick={this.changePage}>
+                    <i className="left arrow icon"></i>
                     Last
                 </button>
-                <button class="ui right labeled icon button" value={1} onClick={this.changePage}>
-                    <i class="right arrow icon"></i>
+                <button className="ui right labeled icon button" value={1} onClick={this.changePage}>
+                    <i className="right arrow icon"></i>
                     Next
                 </button>
                 <div className='ui cards'>

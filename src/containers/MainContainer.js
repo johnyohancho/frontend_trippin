@@ -5,7 +5,6 @@ import SearchResults from './SearchResults.js';
 
 
 class Main extends React.Component {
-
     constructor() {
         super()
         this.state = {
@@ -37,16 +36,40 @@ class Main extends React.Component {
         fetch(`http://localhost:3000/trips/${id}`, {
             method: 'delete'
             }).then(response =>
-              response.json().then(json => {
-                console.log(json);
-              })
+                response.json().then(json => {
+                    console.log(json);
+                })
             );
     }
     
-    addEvent= (e)=> {
-        if (this.state.tripId) {
-            console.log('addEvent target',e.target.value)
+    addEvent= (newEvent)=> {
+        console.log('added event', newEvent)
+        let eventObj= {
+            name:           newEvent.name,
+            description:    newEvent.classifications[0].genre.name,
+            date:           newEvent.dates.start.localDate,
+            trip_id:        this.state.tripId,
+            start_time:     newEvent.dates.start.localTime,
+            city:           {latitude: newEvent.location.latitude, longitude: newEvent.location.longitude}
         }
+        if (this.state.tripId) {
+            this.setState({tripEvents: [...this.state.tripEvents, eventObj]})
+        }
+        this.postEvent({event: eventObj})
+    }
+
+    postEvent= (newEvent)=> {
+        fetch('http://localhost:3000/events', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                "Access-Token": localStorage.getItem("token")
+            },
+            body: JSON.stringify(newEvent)
+        })
+        .then(resp => resp.json())
+        .then(data => console.log(data))
+        .catch(err => console.log('Error while posting new event to server:', err))
     }
 
     
