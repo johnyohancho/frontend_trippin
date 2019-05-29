@@ -9,7 +9,9 @@ class Main extends React.Component {
     constructor() {
         super()
         this.state = {
-            allTrips: []
+            allTrips: [],
+            tripId: null,
+            tripEvents: []
         }
     }
 
@@ -21,6 +23,7 @@ class Main extends React.Component {
         }))
         .catch(err => console.log("Error:", err))
     }
+
 
     addTrip = (newTrip) => {
         let newTripList = this.state.allTrips.concat(newTrip)
@@ -39,6 +42,12 @@ class Main extends React.Component {
               })
             );
     }
+    
+    addEvent= (e)=> {
+        if (this.state.tripId) {
+            console.log('addEvent target',e.target.value)
+        }
+    }
 
     
     render() {
@@ -52,7 +61,7 @@ class Main extends React.Component {
                         <TripContainer allTrips={this.state.allTrips} addTrip={this.addTrip} deleteTrip={this.deleteTrip}/>
                     </div>
                     <div className="six wide column">
-                        <SearchResults searchTerms={this.props.searchTerms}/>
+                        <SearchResults searchTerms={this.props.searchTerms} addEvent={this.addEvent}/>
                     </div>
                 </div> :
                     <LoginForm history={this.props.history} updateLoginStatus={this.props.updateLoginStatus}/>

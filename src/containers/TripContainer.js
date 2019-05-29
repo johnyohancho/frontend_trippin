@@ -4,7 +4,6 @@ import TripCard from '../components/TripCard'
 
 const TripContainer = (props) => {
 
-
         return (
             <div id="trip-container" className="ui container">
                 <div className="ui raised segment">
