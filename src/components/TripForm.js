@@ -14,7 +14,7 @@ class TripForm extends React.Component {
     saveTrip = (e) => {
       console.log("save trip")
         e.preventDefault()
-        fetch("http://localhost:3000/trips", {
+        fetch("https://backend-trippin.herokuapp.com/trips", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

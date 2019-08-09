@@ -9,6 +9,9 @@ const TripCard = (props) => {
                 <div className="content">
                     <div className="header">
                         {props.card.name}
+                        <div className="meta">
+                            Budget: ${props.card.budget}
+                        </div>
                     </div>
                 </div>
                 <div className="content">

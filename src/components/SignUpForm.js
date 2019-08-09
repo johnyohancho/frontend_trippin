@@ -39,7 +39,7 @@ class SignUpForm extends React.Component {
         }
         console.log('req object:',reqObj)
         e.preventDefault()
-        fetch('http://localhost:3000/users', {
+        fetch('https://backend-trippin.herokuapp.com/users', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
