@@ -10,7 +10,11 @@ const TripCard = (props) => {
                     <div className="header">
                         {props.card.name}
                         <div className="meta">
+<<<<<<< HEAD:src/components/TripCard.js
+                        Budget: ${props.card.budget}
+=======
                             Budget: ${props.card.budget}
+>>>>>>> adf67382d77779ac5f0210bc2ebe455546977e87:src/TripCard.js
                         </div>
                     </div>
                 </div>

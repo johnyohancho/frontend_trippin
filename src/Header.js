@@ -12,6 +12,9 @@ const Header = (props) => {
               <Link to='/about'className='item'>
                   <div className="content">About</div>
               </Link>
+              <Link to='/'className='item'>
+                  <div className="content">Trips</div>
+              </Link>
               <Link to='/budget'className='item'>
                   <div className="content">Budget</div>
               </Link>
