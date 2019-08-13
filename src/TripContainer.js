@@ -1,6 +1,6 @@
 import React from 'react';
-import TripForm from '../components/TripForm'
-import TripCard from '../components/TripCard'
+import TripForm from './TripForm'
+import TripCard from './TripCard'
 
 
 const TripContainer = (props) => {

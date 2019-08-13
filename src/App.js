@@ -1,13 +1,11 @@
 import React from 'react';
-import './App.css';
+import './css/App.css';
 import { Switch, Route } from 'react-router-dom';
-// import {throwStatement} from '@babel/types';
-// import {Header} from 'semantic-ui-react';
 import NavBar from './NavBar';
-import MainContainer from './containers/MainContainer';
-import LoginForm from './components/LoginForm'
-import Header from './components/Header'
-import SignUpForm from './components/SignUpForm'
+import MainContainer from './MainContainer';
+import LoginForm from './LoginForm'
+import Header from './Header'
+import SignUpForm from './SignUpForm'
 
 
 class App extends React.Component {
