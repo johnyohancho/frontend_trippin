@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        fetch('http://localhost:3000/login', {
+        fetch('https://backend-trippin.herokuapp.com/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -1,5 +1,5 @@
 import React from 'react';
-import EventCard from '../components/EventCard';
+import EventCard from './EventCard';
 
 class SearchResults extends React.Component {
     constructor(props) {

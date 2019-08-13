@@ -1,14 +1,19 @@
 import React from 'react';
-import './App.css';
+import './css/App.css';
 import { Switch, Route } from 'react-router-dom';
-// import {throwStatement} from '@babel/types';
-// import {Header} from 'semantic-ui-react';
 import NavBar from './NavBar';
+<<<<<<< HEAD
 import MainContainer from './containers/MainContainer';
 // import LoginForm from './components/LoginForm'
 import Header from './components/Header'
 import SignUpForm from './components/SignUpForm'
 import About from './components/About'
+=======
+import MainContainer from './MainContainer';
+import LoginForm from './LoginForm'
+import Header from './Header'
+import SignUpForm from './SignUpForm'
+>>>>>>> adf67382d77779ac5f0210bc2ebe455546977e87
 
 
 class App extends React.Component {

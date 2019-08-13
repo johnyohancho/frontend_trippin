@@ -18,7 +18,7 @@ class EventForm extends React.Component {
 
     saveEvent = (e) => {
         e.preventDefault()
-        fetch("http://localhost:3000/events", {
+        fetch("https://backend-trippin.herokuapp.com/events", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
